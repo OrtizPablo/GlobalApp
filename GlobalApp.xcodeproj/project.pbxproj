@@ -13,6 +13,7 @@
 		6ED9EE961FC89EF000507B8C /* GlobalApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6ED9EE941FC89EF000507B8C /* GlobalApp.xcdatamodeld */; };
 		6ED9EE981FC89EF000507B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED9EE971FC89EF000507B8C /* Assets.xcassets */; };
 		6ED9EE9B1FC89EF000507B8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ED9EE991FC89EF000507B8C /* LaunchScreen.storyboard */; };
+		6ED9EEA31FC8A0B900507B8C /* CustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED9EEA21FC8A0B900507B8C /* CustomerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6ED9EE971FC89EF000507B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ED9EE9A1FC89EF000507B8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6ED9EE9C1FC89EF000507B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ED9EEA21FC8A0B900507B8C /* CustomerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				6ED9EE8D1FC89EF000507B8C /* AppDelegate.swift */,
 				6ED9EE8F1FC89EF000507B8C /* ViewController.swift */,
 				6ED9EE911FC89EF000507B8C /* Main.storyboard */,
+				6ED9EEA21FC8A0B900507B8C /* CustomerTableViewController.swift */,
 				6ED9EE971FC89EF000507B8C /* Assets.xcassets */,
 				6ED9EE991FC89EF000507B8C /* LaunchScreen.storyboard */,
 				6ED9EE9C1FC89EF000507B8C /* Info.plist */,
@@ -142,6 +145,7 @@
 				6ED9EE901FC89EF000507B8C /* ViewController.swift in Sources */,
 				6ED9EE961FC89EF000507B8C /* GlobalApp.xcdatamodeld in Sources */,
 				6ED9EE8E1FC89EF000507B8C /* AppDelegate.swift in Sources */,
+				6ED9EEA31FC8A0B900507B8C /* CustomerTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
