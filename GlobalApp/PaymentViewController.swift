@@ -26,7 +26,7 @@ class PaymentViewController: UIViewController {
         
         nameLabel.text = name
         genderLabel.text = gender
-        priceLabel.text = price.description
+        priceLabel.text = price.description + " Pounds" 
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,7 +72,6 @@ class PaymentViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
 
     /*
     // MARK: - Navigation

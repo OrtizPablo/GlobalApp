@@ -14,12 +14,13 @@ class CustomerTableViewController: UITableViewController {
     //MARK: Properties
     //let clothesTest: [String] = ["Camiseta", "Camisa", "Pantalones"]
     var clothes: [NSManagedObject] = []
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveClothes(name: "Shirt", gender: "M", price: 15, quantity: 1)
-        saveClothes(name: "Jacket", gender: "M", price: 15, quantity: 1)
+        saveClothes(name: "Shirt", gender: "Man", price: 15, quantity: 1)
+        saveClothes(name: "Jacket", gender: "Man", price: 15, quantity: 1)
         fetchClothes()
     }
     
@@ -103,7 +104,6 @@ class CustomerTableViewController: UITableViewController {
             destination.name = clothes[tableView.indexPathForSelectedRow![1]].value(forKey: "name") as! String
             destination.gender = clothes[tableView.indexPathForSelectedRow![1]].value(forKey: "gender") as! String
             destination.price = clothes[tableView.indexPathForSelectedRow![1]].value(forKey: "price") as! Double
-            print(clothes[tableView.indexPathForSelectedRow![1]].value(forKey: "quantity")!)
         }
     }
     
@@ -133,6 +133,46 @@ class CustomerTableViewController: UITableViewController {
             {
                 let quantity = clothes[index].value(forKey: "quantity") as! Int
                 if  quantity < 1
+                {
+                    clothes.remove(at: index)
+                    index -= 1
+                }
+                index += 1
+            }
+        } catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    // Function that fetches the data of the clothes that has a positive quantity value and the gender selected
+    func fetchClothesByGender(genderPar: String) {
+        
+        // Getting the NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Creating the object to fetch the data
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Clothes")
+        
+        // Fetching the data from the entity
+        do
+        {
+            clothes = try managedContext.fetch(fetchRequest)
+            
+            var index = 0
+            
+            // Deleting data from the array clothes with a zero value in its quantity
+            // And deleting data from the array if its gender is not equal as the gender passed by parameter
+            while index < clothes.count
+            {
+                let quantity = clothes[index].value(forKey: "quantity") as! Int
+                let gender = clothes[index].value(forKey: "gender") as! String
+                if  quantity < 1 || gender != genderPar
                 {
                     clothes.remove(at: index)
                     index -= 1
@@ -178,6 +218,25 @@ class CustomerTableViewController: UITableViewController {
     
     // Segue to go backwards from the PaymentViewController to CustomerTableViewController
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+    
+    // Action made when the segmentedControl is pressed
+    @IBAction func filterClothes(_ sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        // If All is selected -> show all the clothes
+        case 0:
+            fetchClothes()
+        // If Woman is selected -> show all the clothes for women
+        case 1:
+            fetchClothesByGender(genderPar: "Woman")
+        // If Man is selected -> show all the clothes for men
+        default:
+            fetchClothesByGender(genderPar: "Man")
+        }
+        // Updating data in the table view
+        self.tableView.reloadData()
+    }
+    
 
 }
 
