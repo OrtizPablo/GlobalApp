@@ -7,12 +7,8 @@
 //
 
 import UIKit
-import CoreData
 
 class ViewController: UIViewController {
-
-    //MARK: Properties
-    var clothes: [NSManagedObject] = []
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var password: UITextField!

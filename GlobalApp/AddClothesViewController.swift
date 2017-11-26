@@ -36,7 +36,7 @@ class AddClothesViewController: UIViewController {
     // Button to insert a piece of clothing
     @IBAction func AddButton(_ sender: UIButton) {
         
-        if check()
+        if check() && checkInsert()
         {
             let name = nameText.text ?? ""
             let gender = genderText.text ?? ""
@@ -92,6 +92,7 @@ class AddClothesViewController: UIViewController {
         }
         else
         {
+            let gender = genderText.text ?? ""
             let price = Double(priceText.text!) ?? 0.0
             let quantity = Int(quantityText.text!) ?? 0
             // Incorrect price error
@@ -112,10 +113,61 @@ class AddClothesViewController: UIViewController {
                 self.present(alertView, animated: true, completion: nil)
                 return false
             }
-            else{
+            else if gender == "Man" || gender == "Woman"{
                 return true
             }
+            // Incorrect gender error
+            else
+            {
+                let alertView = UIAlertController(title: "Error", message: "Insert a correct gender: Man or Woman", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertView.addAction(action)
+                self.present(alertView, animated: true, completion: nil)
+                return false
+            }
         }
+    }
+    
+    func checkInsert() -> Bool {
+        
+        var varCheck = true
+        
+        // Getting the NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return false
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Creating the object to fetch the data
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Clothes")
+        
+        // Fetching the data from the entity
+        do
+        {
+            clothes = try managedContext.fetch(fetchRequest)
+            
+            for clothing in clothes
+            {
+                if clothing.value(forKey: "name") as? String == nameText.text
+                {
+                    varCheck = false
+                }
+            }
+        } catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return false
+        }
+        if !varCheck
+        {
+            let alertView = UIAlertController(title: "Error", message: "The piece of clothing inserted is already in the system", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertView.addAction(action)
+            self.present(alertView, animated: true, completion: nil)
+        }
+        return varCheck
     }
 
     /*
