@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
     //MARK: Properties
+    var clothes: [NSManagedObject] = []
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -27,8 +29,7 @@ class ViewController: UIViewController {
     
     @IBAction func Enter(_ sender: UIButton) {
         // If the user is a customer
-        if user.text == "" && password.text == ""
-        //if user.text == "Customer" && password.text == "Cust1234"
+        if user.text == "Customer" && password.text == "Cust1234"
         {
             performSegue(withIdentifier: "CustomerSegue", sender: self)
         }

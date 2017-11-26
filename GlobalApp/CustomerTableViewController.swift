@@ -12,20 +12,16 @@ import CoreData
 class CustomerTableViewController: UITableViewController {
     
     //MARK: Properties
-    //let clothesTest: [String] = ["Camiseta", "Camisa", "Pantalones"]
     var clothes: [NSManagedObject] = []
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveClothes(name: "Shirt", gender: "Man", price: 15, quantity: 1)
-        saveClothes(name: "Jacket", gender: "Man", price: 15, quantity: 1)
-        fetchClothes()
+        fetchAvailableClothes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchClothes()
+        fetchAvailableClothes()
         self.tableView.reloadData()
     }
 
@@ -108,7 +104,7 @@ class CustomerTableViewController: UITableViewController {
     }
     
     // Function that fetches the data of the clothes that has a positive quantity value
-    func fetchClothes() {
+    func fetchAvailableClothes() {
         
         // Getting the NSManagedObjectContext
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
@@ -185,37 +181,6 @@ class CustomerTableViewController: UITableViewController {
         }
     }
     
-    // Function that saves the clothes persistently
-    func saveClothes(name: String, gender: String, price: Double, quantity: Int) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
-        {
-                return
-        }
-        
-        // Getting the NSManagedObjectContext
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        // Creating managed object and inserting it into the managed object context
-        let entity = NSEntityDescription.entity(forEntityName: "Clothes", in: managedContext)!
-        let clothesInsert = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        // Linking the parameters to the entity columns to insert the data
-        clothesInsert.setValue(name, forKeyPath: "name")
-        clothesInsert.setValue(gender, forKeyPath: "gender")
-        clothesInsert.setValue(price, forKeyPath: "price")
-        clothesInsert.setValue(quantity, forKeyPath: "quantity")
-        
-        // Commiting the data
-        do
-        {
-            try managedContext.save()
-            clothes.append(clothesInsert)
-        } catch let error as NSError
-        {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
     // Segue to go backwards from the PaymentViewController to CustomerTableViewController
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
     
@@ -225,7 +190,7 @@ class CustomerTableViewController: UITableViewController {
         {
         // If All is selected -> show all the clothes
         case 0:
-            fetchClothes()
+            fetchAvailableClothes()
         // If Woman is selected -> show all the clothes for women
         case 1:
             fetchClothesByGender(genderPar: "Woman")

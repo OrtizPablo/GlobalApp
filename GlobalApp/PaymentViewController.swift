@@ -35,12 +35,12 @@ class PaymentViewController: UIViewController {
     }
     
     @IBAction func Pay(_ sender: UIButton) {
-        updateData()
+        updateQuantityCustomer()
         self.performSegue(withIdentifier: "unwindToMenu", sender: self)
     }
     
     // Function that updates the quantity of the piece of clothing that the system has
-    func updateData() {
+    func updateQuantityCustomer() {
         var clothes:[NSManagedObject] = []
         // Getting the NSManagedObjectContext
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else

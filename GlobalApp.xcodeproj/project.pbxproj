@@ -15,6 +15,9 @@
 		6ED9EE9B1FC89EF000507B8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ED9EE991FC89EF000507B8C /* LaunchScreen.storyboard */; };
 		6ED9EEA31FC8A0B900507B8C /* CustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED9EEA21FC8A0B900507B8C /* CustomerTableViewController.swift */; };
 		6ED9EEA51FC8B25900507B8C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED9EEA41FC8B25900507B8C /* PaymentViewController.swift */; };
+		6EE4E79D1FCB3F3C003FB7CC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4E79C1FCB3F3C003FB7CC /* AddViewController.swift */; };
+		6EE4E79F1FCB3F57003FB7CC /* ProviderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4E79E1FCB3F57003FB7CC /* ProviderTableViewController.swift */; };
+		6EE4E7A11FCB5377003FB7CC /* AddClothesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4E7A01FCB5377003FB7CC /* AddClothesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		6ED9EE9C1FC89EF000507B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6ED9EEA21FC8A0B900507B8C /* CustomerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewController.swift; sourceTree = "<group>"; };
 		6ED9EEA41FC8B25900507B8C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		6EE4E79C1FCB3F3C003FB7CC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		6EE4E79E1FCB3F57003FB7CC /* ProviderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTableViewController.swift; sourceTree = "<group>"; };
+		6EE4E7A01FCB5377003FB7CC /* AddClothesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClothesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +66,13 @@
 		6ED9EE8C1FC89EF000507B8C /* GlobalApp */ = {
 			isa = PBXGroup;
 			children = (
+				6EE4E7A01FCB5377003FB7CC /* AddClothesViewController.swift */,
+				6EE4E79C1FCB3F3C003FB7CC /* AddViewController.swift */,
 				6ED9EE8D1FC89EF000507B8C /* AppDelegate.swift */,
 				6ED9EEA21FC8A0B900507B8C /* CustomerTableViewController.swift */,
 				6ED9EE911FC89EF000507B8C /* Main.storyboard */,
 				6ED9EEA41FC8B25900507B8C /* PaymentViewController.swift */,
+				6EE4E79E1FCB3F57003FB7CC /* ProviderTableViewController.swift */,
 				6ED9EE8F1FC89EF000507B8C /* ViewController.swift */,
 				6ED9EE971FC89EF000507B8C /* Assets.xcassets */,
 				6ED9EE991FC89EF000507B8C /* LaunchScreen.storyboard */,
@@ -147,6 +156,9 @@
 			files = (
 				6ED9EE901FC89EF000507B8C /* ViewController.swift in Sources */,
 				6ED9EE961FC89EF000507B8C /* GlobalApp.xcdatamodeld in Sources */,
+				6EE4E79F1FCB3F57003FB7CC /* ProviderTableViewController.swift in Sources */,
+				6EE4E7A11FCB5377003FB7CC /* AddClothesViewController.swift in Sources */,
+				6EE4E79D1FCB3F3C003FB7CC /* AddViewController.swift in Sources */,
 				6ED9EEA51FC8B25900507B8C /* PaymentViewController.swift in Sources */,
 				6ED9EE8E1FC89EF000507B8C /* AppDelegate.swift in Sources */,
 				6ED9EEA31FC8A0B900507B8C /* CustomerTableViewController.swift in Sources */,
